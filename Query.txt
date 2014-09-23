@@ -1,0 +1,7 @@
+SELECT * FROM parts_t //displays all parts in the market, both available and unavailable in inventory
+SELECT * FROM supplierts_t //displays all existing partnerships with suppliers
+SELECT * FROM stock_orders_t //displays all existing stock orders to suppliers
+SELECT * FROM invoices_t //displays all existing invoices from customers 
+SELECT * FROM invoice_histories_t //displays all 
+
+
