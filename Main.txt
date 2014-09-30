@@ -10,10 +10,16 @@
 
 <table>
 
-<tr><td><center>Hello!</center></td></tr>
+<tr><td><center>Welcome! You may now use the System Interface.</center></td></tr>
 
 </table>
+</div>
 
+<div class="space">
+
+<table>
+<tr><td></td></tr>
+</table>
 
 </div>
 
