@@ -1,0 +1,25 @@
+.header table {
+ background-color: red;
+ height: 50px;
+ width: 1000px;
+}
+
+.options table {
+    border-color: black;
+    border-top: 50px;
+    border-right: 50px;
+    background-color: white;
+    height: 550px;
+    width: 100px;
+    position: absolute;
+}
+
+.display table {
+ padding-left: 50px;
+ padding-right: 80px;
+ background-color: green;   
+ border-left: 200px;
+ border-bottom: 550px;
+ height: 550px;
+ width: 1000px;
+}
