@@ -1,7 +1,16 @@
 .header table {
- background-color: red;
- height: 50px;
+ background-color: #aabbff;
+ height: 100px;
  width: 1000px;
+}
+
+.header td{
+ font-family: Arial;
+ font-size: 30px;
+}
+
+.space table {
+ height: 20px;
 }
 
 .options table {
@@ -15,9 +24,9 @@
 }
 
 .display table {
- padding-left: 50px;
+ padding-left: 50;
  padding-right: 80px;
- background-color: green;   
+ background-color: #fcfdd8;   
  border-left: 200px;
  border-bottom: 550px;
  height: 550px;
