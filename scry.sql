@@ -66,6 +66,12 @@ CONSTRAINT FOREIGN KEY (supplier_id) REFERENCES suppliers_t(supplier_id),
 CONSTRAINT FOREIGN KEY (stock_order_id) REFERENCES stock_orders_t(stock_order_id)
 );
 
+CREATE TABLE IF NOT EXISTS users_t(
+username VARCHAR(30) NOT NULL,
+password VARCHAR(30) NOT NULL,
+admin TINYINT NOT NULL,
+CONSTRAINT users_pk PRIMARY KEY(username)
+);
 
 
 
