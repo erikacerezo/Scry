@@ -6,17 +6,24 @@
 	<title>Welcome!</title>
 </head>
 <body>
+
 <div class="header">
 <h1>Welcome.</h1>
 </div>
 </body>
+</div class>
+
 <div class="info">
 <center><form1>
-Username: <input type="text" name="Username"><br>
+Username:<input type="text" name="Username"><br>
 </form1></center>
 <center>
-<form2>
-Password: <input type="password" name="pwd">
+<form2>Password:
+<input type="password" name="pwd">
 </form2></center>
+
 </div class>
+<div class="fire">
+<a href="#" class="btn">POGI KAMI</a>
+</div>
 </html>
