@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel='stylesheet' href='style.css'/>
+    <link href="http://s3.amazonaws.com/codecademy-content  /courses/ltp/css/bootstrap.css" rel="stylesheet">
+	<script src='script.js'></script>
+</head>
+<body>
+
+<div class="header">
+
+<table>
+
+<tr><td><center>Welcome! You may now use the System Interface.</center></td></tr>
+
+</table>
+</div>
+
+<div>
+
+<table>
+</table>
+
+</div>
+
+<div class="options">
+<table >
+
+   <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Order Parts</a></td></tr>
+   <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Sell Parts</a></td></tr>
+   <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Pay Supplier</a></td></tr>
+   <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Receive Payment</a></td></tr>
+   <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Cancel Order</a></td></tr>
+   <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Update Order</a></td></tr>
+   <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Check Accounting</a></td></tr>
+   <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">View Item</a></td></tr>
+
+</table>
+
+
+</div>
+
+<div class="display">
+<table border="2px solid">
+<tr><td>Payment Type: </td><td>Cheque</td></tr>
+<tr><td>Payment Date:</td><td>October 3, 2014</td></tr>
+<tr><td>Payment Number:</td><td>184873</td></tr>
+<tr><td>Amount:</td><td>500000</td></tr>
+<tr><td>Amount in Words:</td><td>Five Hundred Thousand</td></tr>
+<tr><td>Currency:</td><td>Pesos</td></tr>
+</table>
+
+</div>
+
+</body>
+</htm>
