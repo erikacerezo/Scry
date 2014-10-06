@@ -25,7 +25,7 @@
 
 <div class="options">
 <table>
-
+    <table border="1" id="menu">
    <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Order Parts</a></td></tr>
    <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Sell Parts</a></td></tr>
    <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Pay Supplier</a></td></tr>
@@ -34,7 +34,6 @@
    <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Update Order</a></td></tr>
    <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">Check Accounting</a></td></tr>
    <tr><td><a href="https://www.facebook.com/groups/1517061575182399/">View Item</a></td></tr>
-
 </table>
 
 
