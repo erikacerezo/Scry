@@ -1,3 +1,8 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
 .header table {
  background-color: #aabbff;
  height: 100px;
@@ -5,7 +10,7 @@
 }
 
 .header td{
- font-family: Arial;
+ font-family: Ubuntu, sans-serif;
  font-size: 30px;
 }
 
@@ -17,10 +22,16 @@
     border-color: black;
     border-top: 50px;
     border-right: 50px;
-    background-color: white;
+    background-color: #aabbff;
     height: 550px;
-    width: 100px;
+    width: 150px;
+    font-size: 18px;
+    font-family: Ubuntu, sans-serif; 
     position: absolute;
+}
+
+#menu a:hover {
+font-weight: bold;
 }
 
 .display table {
