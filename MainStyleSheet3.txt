@@ -1,0 +1,80 @@
+
+.header {
+ background-color: #aabbff;
+ height: 100px;
+ width: 1000px;
+ border:  5px dashed;
+}
+
+.header h1{
+ font-family: 'Courier New', serif;
+ font-size: 30px;
+ vertical-align: center;
+}
+
+.options table {
+    height: 350px;
+    width: 170px;
+    font-size: 18px;
+    font-family: Ubuntu, sans-serif; 
+    position: absolute;
+    margin-top: 20px;
+}
+
+.fire{
+    width: 200px;
+    text-align:center;
+    }
+
+    
+a.btn{
+    display: inline-block;
+    color: #777;
+    background-color: #eee;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    border: 1px solid;
+    width:160px;
+    text-align: center;
+    text-decoration: none;
+    }
+    
+a.btn:hover{
+     display: inline-block;
+    color: #777;
+    font-weight: bold;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    border: 1px solid;
+    min-width: 15%;
+    }
+
+a.btn:active{
+     display: inline-block;
+    color: #777;
+    background-color: #7296FF;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    border: 1px solid;
+    min-width: 15%;
+    }
+
+
+.display table {
+ padding-left: 50;
+ padding-right: 80px;
+ background-color: #fcfdd8;   
+ border-left: 200px;
+ border-bottom: 500px;
+ height: 550px;
+ width: 1000px;
+}
