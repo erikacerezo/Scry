@@ -56,9 +56,9 @@
 										<span class="caret"></span>
 										</button>
 													<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=ID">ID #</a></li>
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=Name">Name</a></li>
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=Supplier">Supplier</a></li>
+													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=part_id">ID #</a></li>
+													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=part_detail">Name</a></li>
+													<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Supplier</a></li>
 													</ul>
 									</div>
 							</div>
@@ -95,7 +95,17 @@
 							<!--samplerow-->
 							<tr><?php 
 							
-								$quer = "SELECT * FROM parts_t;";
+								$quer = "SELECT * FROM parts_t ";
+								
+								if(isset($_GET['sort_by']))
+								{
+									$quer.="ORDER BY ".$_GET['sort_by'].";";
+								}
+								else
+								{
+									$quer.=";";
+								}
+								
 								$result = @mysqli_query($sqlconn, $quer);
 								if(@mysqli_num_rows($result) == 0)
 								{
