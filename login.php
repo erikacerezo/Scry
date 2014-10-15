@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<div class="header"><?php session_start();?>
+
 <html>
 <head>
 	<link rel='stylesheet' href='style.css'/>
@@ -6,8 +9,6 @@
 	<title>Welcome!</title>
 </head>
 <body>
-
-<div class="header">
 <h1>Welcome.</h1>
 </div>
 </body>
@@ -30,6 +31,7 @@ Username:<input type=\"text\" name=\"Username\"><br>
 <div class=\"fire\">
 <input type = \"submit\" value = \"echos\">
 </form>";
+
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 $un = $pwd = "null";
 if(isset($_POST['Username']))
@@ -56,13 +58,13 @@ if(mysqli_num_rows($result) == 0){
 			}
 		else{
 		$row = @mysqli_fetch_array($result);
-			$status = "Slave";
-			if($row['admin'] == 1)
-			{
-				$status = "Admin";
-			}
-			echo "<center>Welcom $status $un!</center>";
+		
+		$_SESSION["admin"] = $row['admin'];
+				;
+		header("Location: mainmenu.php");
+		
 		}
+		
 		}
 
 @mysqli_close($sqlconn);?>
