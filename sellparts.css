@@ -1,0 +1,8 @@
+.laman .container-fluid .row .col-md-3 .row {
+margin-left: 10px;
+margin-right: 10px;
+}
+
+.laman .container-fluid .row #submit {
+margin-right: 20px;
+}
