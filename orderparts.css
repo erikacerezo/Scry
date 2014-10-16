@@ -2,3 +2,10 @@
 margin-right: 20px;
 }
 
+.laman .container-fluid .row .col-md-2 .row {
+margin-left: 30px;
+}
+
+.laman .container-fluid .row .col-md-2 .row .dropdown #dropdownMenu1 .dropdown-menu{
+margin-left: 30px;
+}
