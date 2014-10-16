@@ -23,13 +23,13 @@
   <body>
   <?php
 	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");
-	$quer = "SELECT * FROM parts_t ";?>
+	$quer = "SELECT * FROM customers_t ";?>
  <div class="wrapper">
 		<div class="container-fluid">
 				<div class="row">
 					<ul class="nav nav-pills">
-							<li class="active"><a href="viewitem.php">View Item</a></li>
-							<li><a href="viewcustomer.php">View Customer</a></li>
+							<li><a href="viewitem.php">View Item</a></li>
+							<li class="active"><a href="viewcustomer.php">View Customer</a></li>
 							<li><a href="viewsupplier.php">View Supplier</a></li>
 							<li><a href="viewinvoice.php">View Invoice</a></li>
 							<li><a href="viewstockorder.php">View Stock Order</a></li>
@@ -61,9 +61,9 @@
 										<span class="caret"></span>
 										</button>
 													<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=part_id">ID #</a></li>
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=part_detail">Name</a></li>
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Supplier</a></li>
+													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=customer_id">ID #</a></li>
+													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=name">Name</a></li>
+													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=address">Address</a></li>
 													</ul>
 									</div>
 							</div>
@@ -75,9 +75,9 @@
 										<form method="POST" role="form" >
 										<select name="search">
 													<!--<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">-->
-													<option value="part_id"><a role="menuitem" tabindex="-1">ID #</a></option>
-													<option value="part_name"><a role="menuitem" tabindex="-1" href="#">Name</a></option>
-													<option part value="part_detail"><a role="menuitem" tabindex="-1" href="#">Description</a></option>
+													<option value="customer_id"><a role="menuitem" tabindex="-1">ID #</a></option>
+													<option value="name"><a role="menuitem" tabindex="-1" href="#">Name</a></option>
+													<option part value="address"><a role="menuitem" tabindex="-1" href="#">Address</a></option>
 													</select>
 									</div>
 							</div>
@@ -93,11 +93,10 @@
 						<table class="table table-striped">
 							<tr>
 								<th>ID #</th>
-								<th>Product Name</th>
-								<th>Product Description</th>
-								<th>Price</th>
-								<th>		Quantity</th>
-							</tr>
+								<th>Customer Name</th>
+								<th>Address</th>
+								<th>Contact #</th>
+									</tr>
 							<!--samplerow-->
 							<tr><?php 
 								
@@ -123,15 +122,15 @@
 								$temp ="";
 								while($row = @mysqli_fetch_array($result))
 								{
-								$temp.= ("<tr><td>".$row['part_id']."</td>
-								<td>".$row['part_name']."</td>
-								<td>".$row['part_detail']."</td>
-								<td>".$row['price']."</td>
-								<td>".$row['qty']."</td></tr>");
+								$temp.= ("<tr><td>".$row['customer_id']."</td>
+								<td>".$row['name']."</td>
+								<td>".$row['address']."</td>
+								<td>".$row['contact_num']."</td>");
 								}
 								echo $temp;
-						
-								}@mysqli_close($sqlconn);
+	
+								}
+								@mysqli_close($sqlconn);
 	?>
 						</table>
 						</div>

@@ -19,11 +19,16 @@
     <![endif]-->
   </head>
   <body>
+  
  <div class="wrapper">
 		<div class="container-fluid">
 				<div class="row">
 					<ul class="nav nav-pills">
-							<li><a href="../ViewItem.html">View Item</a></li>
+							<li><a href="viewitem.php">View Item</a></li>
+							<li><a href="viewcustomer.php">View Customer</a></li>
+							<li><a href="viewsupplier.php">View Supplier</a></li>
+							<li><a href="viewinvoice.php">View Invoice</a></li>
+							<li><a href="viewstockorder.php">View Stock Order</a></li>
 							<li><a href="../orderparts">Order Parts</a></li>
 							<li><a href="../updateorder">Update Order</a></li>
 							<?php
