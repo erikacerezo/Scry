@@ -22,7 +22,8 @@
   </head>
   <body>
   <?php
-	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");?>
+	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");
+	$quer = "SELECT * FROM parts_t ";?>
  <div class="wrapper">
 		<div class="container-fluid">
 				<div class="row">
@@ -64,21 +65,22 @@
 							</div>
 							<div class="row">
 									<div class="dropdown">
-										<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">
+										<!--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">-->
 										<strong>SEARCH BY</strong>
 										<span class="caret"></span>
-										</button>
-													<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="#">ID #</a></li>
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Name</a></li>
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Supplier</a></li>
-													</ul>
+										<form method="POST" role="form" >
+										<select name="search">
+													<!--<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">-->
+													<option value="part_id"><a role="menuitem" tabindex="-1">ID #</a></option>
+													<option value="part_name"><a role="menuitem" tabindex="-1" href="#">Name</a></option>
+													<option part value="part_detail"><a role="menuitem" tabindex="-1" href="#">Description</a></option>
+													</select>
 									</div>
 							</div>
 							<div class="row">
-								<form role="form">
+							<!--	<form role="form">-->
 								<div class="form-group">
-								<input type="text" class="form-control" id="search" placeholder="Enter Query">
+								<input type="text" name="q" class="form-control" id="search">
 								</div>
 							</form>
 							</div>
@@ -90,13 +92,15 @@
 								<th>Product Name</th>
 								<th>Product Description</th>
 								<th>Price</th>
-								<th>Suppliers</th>
+								<th>Quantity</th>
 							</tr>
 							<!--samplerow-->
 							<tr><?php 
-							
-								$quer = "SELECT * FROM parts_t ";
 								
+								if(isset($_POST['q']))
+								{
+									$quer.="WHERE ".$_POST['search']." LIKE \"%".$_POST['q']."%\"";
+								}						
 								if(isset($_GET['sort_by']))
 								{
 									$quer.="ORDER BY ".$_GET['sort_by'].";";
@@ -116,10 +120,10 @@
 								while($row = @mysqli_fetch_array($result))
 								{
 								$temp.= ("<tr><td>".$row['part_id']."</td>
+								<td>".$row['part_name']."</td>
 								<td>".$row['part_detail']."</td>
-								<td>"."Pantawag ng chix at kunyaring chix"."</td>
 								<td>".$row['price']."</td>
-								<td>"."Lance Yap"."</td></tr>");
+								<td>".$row['qty']."</td></tr>");
 								}
 								echo $temp;
 						
