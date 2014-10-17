@@ -4,11 +4,11 @@ Scry
 CS123 Project
 
 ====
-CONTENTS:
-I. System Requirements
-II. Installation
-III. Modules
-IV. Uninstallation
+#CONTENTS:<h1>
+##I. System Requirements<h2>
+##II. Installation<h2>
+##III. Modules<h2>
+##IV. Uninstallation<h2>
 
 ====
 I. SYSTEM REQUIREMENTS
