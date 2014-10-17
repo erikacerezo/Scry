@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<?php session_start();?>
+<?php session_start();
+if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+  ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -25,6 +30,7 @@
 				$moneybag = array();
 				$moneybag['cart'] = explode(";",$_SESSION['string']);
 	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");
+	echo $_SESSION['custid'];
 	?>
  <div class="wrapper">
 		<div class="container-fluid">
@@ -77,6 +83,7 @@
 							
 							while(!empty($moneybag['cart'][$index]))
 							{
+						
 							$quer = "SELECT * FROM parts_t WHERE part_id = ".$moneybag['cart'][$index].";";
 							
 							$index++;
@@ -108,7 +115,8 @@
 									
 									$neworder = "INSERT INTO invoices_t(customer_id,invoice_date,status)
 									VALUES(".$_SESSION['custid'].",CURDATE(), \"Pending\");";
-									mysqli_query($sqlconn, $neworder);
+									echo $neworder;
+									@mysqli_query($sqlconn, $neworder);
 									$newerid = "SELECT MAX(invoice_id) from invoices_t;";
 									$newerid1= @mysqli_query($sqlconn, $newerid);
 									$newerid2= @mysqli_fetch_array($newerid1);
@@ -135,7 +143,7 @@
 										mysqli_query($sqlconn, $insert);
 										mysqli_query($sqlconn, $makebawas);
 									}
-									header("Location: sellparts3.php");
+									#header("Location: sellparts3.php");
 								}
 								@mysqli_close($sqlconn);?>
 						</table>

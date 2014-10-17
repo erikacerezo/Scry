@@ -3,7 +3,11 @@
   <head>
   	<?php session_start(); 
 		$_SESSION['order']="";
-	?>
+	if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+  ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -205,11 +209,11 @@
 								$insertq="INSERT INTO customers_t (name, address, contact_num) VALUES(\"".$_POST['name']."\",".$_POST['num'].",".$_POST['address'].");";
 									
 								mysqli_query($sqlconn, $insertq);							
-								$qerid ="SELECT MAX(customer_id) from customers_t;";
-								$rowsults = @mysqli_query($sql_conn, $qerid);
+								$qerid ="SELECT MAX(customer_id) as ID from customers_t;";
+								$rowsults = @mysqli_query($sqlconn, $qerid);
 								$rowid = @mysqli_fetch_array($rowsults);
-								$_SESSION['custid']=$rowid['MAX(customer_id)'];
-								#header("Location: sellparts2.php");
+								$_SESSION['custid']=$rowid['ID'];
+								header("Location: sellparts2.php");
 								}
 								else
 								{
@@ -224,8 +228,7 @@
 								$_SESSION['string']="";
 								$_SESSION['custid']= $_POST['customer'];
 								
-								
-								echo $_SESSION['custid'];
+			
 								$results = @mysqli_query($sqlconn, $quer);
 								while($rows = @mysqli_fetch_array($results))
 								{

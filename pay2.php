@@ -18,7 +18,12 @@
     <![endif]-->
   </head>
   <body>
-  <?php session_start();?>
+  <?php session_start();
+  if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+  ?>
  <div class="wrapper">
 		<div class="container-fluid">
 				<div class="row">
@@ -30,7 +35,7 @@
 							echo "<li><a href=\"viewinvoice.php\">View Invoice</a></li>
 							<li><a href=\"viewstockorder.php\">View Stock Order</a></li>
 							";}?>
-							<li class="active"><a href="orderparts.php">Order Parts</a></li>
+							<li><a href="orderparts.php">Order Parts</a></li>
 							<li ><a href="sellparts.php">Sell Parts</a></li>
 							<li><a href="cancelorder.php">Cancel Order</a></li>
 						
@@ -45,7 +50,7 @@
 					<div class="jumbotron">
 			<center><h1>Success!</h1>
 			<p>Transaction Completed.</p>
-			<p><a href="../orderparts.html" class="btn btn-primary btn-lg" role="button">New Order</a></p>
+			<p><a href="orderparts.php" class="btn btn-primary btn-lg" role="button">New Order</a></p>
 			</center>
 					</div>
 					</div>

@@ -18,7 +18,12 @@
     <![endif]-->
   </head>
   <body>
-  <?php session_start();?>
+  <?php session_start();
+  if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+  ?>
  <div class="wrapper">
 		<div class="container-fluid">
 				<div class="row">

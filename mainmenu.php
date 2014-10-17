@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<?php session_start();?>
+<?php session_start();
+if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+  ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">

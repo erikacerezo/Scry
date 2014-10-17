@@ -3,6 +3,11 @@
   <head>
 	<?php session_start(); 
 		$_SESSION['order']="";
+		if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+ 
 	?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

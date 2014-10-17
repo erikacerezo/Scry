@@ -19,7 +19,12 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<?php session_start();
-	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");?>
+	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");
+	if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+  ?>
   </head>
   <body>
  <div class="wrapper">
@@ -107,6 +112,7 @@
 										$query2 = "UPDATE invoices_t 
 													SET status = \"Complete\"
 													WHERE invoice_id = ".$STRID.";";
+											
 										mysqli_query($sqlconn, $query2);
 									}
 								}

@@ -17,8 +17,9 @@
 <div class="info">
 <center>
 <?php
+
 	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");
-	
+
 echo "<form method = \"POST\">
 <form1>
 Username:<input type=\"text\" name=\"Username\"><br>
@@ -29,7 +30,7 @@ Username:<input type=\"text\" name=\"Username\"><br>
 </form2></center>
 </div class>
 <div class=\"fire\">
-<input type = \"submit\" value = \"echos\">
+<input type = \"submit\" value = \"Log In\">
 </form>";
 
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -45,7 +46,7 @@ if(isset($_POST['pwd']))
 }
 
 $quer = "SELECT admin from users_t
-		WHERE 
+		WHERE
 		username like \"$un\"
 		AND BINARY
 		password = \"$pwd\";
@@ -58,13 +59,13 @@ if(mysqli_num_rows($result) == 0){
 			}
 		else{
 		$row = @mysqli_fetch_array($result);
-		
+
 		$_SESSION["admin"] = $row['admin'];
-			
+		$_SESSION["login"] = "IN";
 		header("Location: mainmenu.php");
-		
+
 		}
-	
+
 		}
 
 @mysqli_close($sqlconn);?>

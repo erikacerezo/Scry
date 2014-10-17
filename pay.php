@@ -19,7 +19,12 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<?php session_start();
-	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");?>
+	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");
+	if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+  ?>
   </head>
   <body>
  <div class="wrapper">
@@ -108,6 +113,17 @@
 													SET status = \"Completed\"
 													WHERE stock_order_id = ".$STRID.";";
 										mysqli_query($sqlconn, $query2);
+										$query3 = "SELECT p.part_id as ID, i.qty as QTY from parts_t as p, stock_order_histories as i
+												WHERE i.stock_order_id = ".$STRID." 
+												AND p.part_id = i.part_id;";
+												
+										$result2 = @mysqli_query($sqlconn, $query3); 
+										while($rowz = @mysqli_fetch_array($result2))
+										{
+											
+											$query4 = "UPDATE parts_t SET qty = qty+".$rowz['QTY']." WHERE part_id = ".$rowz['ID'].";";
+											@mysqli_query($sqlconn,$query4);
+										}
 									}
 								}
 								if($toc=="")

@@ -21,7 +21,12 @@
     <![endif]-->
   </head>
   <body>
-  <?php session_start();?>
+  <?php session_start();
+  if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+  ?>
  <div class="wrapper">
 		<div class="container-fluid">
 				<div class="row">
@@ -138,7 +143,7 @@
 										
 										$index++;
 										$index2++;
-										mysqli_query($sqlconn, $makedagdag);
+										#mysqli_query($sqlconn, $makedagdag);
 										mysqli_query($sqlconn, $insert);
 									}
 									header("Location: orderparts3.php");

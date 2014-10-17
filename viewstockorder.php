@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php session_start();?>
+<?php session_start();
+if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+  ?>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,6 +27,12 @@
   </head>
   <body>
   <?php
+	
+	if($_SESSION['admin']!=1)
+		{
+			header("Location: mainmenu.php");
+		}
+  
 	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");
 	$quer = "SELECT "
 			."stock_orders_t.stock_order_id as orderID, "
@@ -72,6 +83,7 @@
 							</div>
 							<div class="row">
 							<!--	<form role="form">-->
+							<form method = "POST">
 								<div class="form-group">
 								<input type="text" name="q" class="form-control" id="search">
 								</div>

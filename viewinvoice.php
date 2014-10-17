@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php session_start();?>
+<?php session_start();
+if($_SESSION["login"]!="IN")
+  {
+		header("Location: login.php");
+  }
+  ?>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +26,13 @@
     <![endif]-->
   </head>
   <body>
+  
   <?php
+  
+		if($_SESSION['admin']!=1)
+		{
+			header("Location: mainmenu.php");
+		}
 	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");
 	$quer = "SELECT "
 			."invoices_t.invoice_id as invoice, "
@@ -71,6 +82,7 @@
 									
 							</div>
 							<div class="row">
+							<form method="POST">
 							<!--	<form role="form">-->
 								<div class="form-group">
 								<input type="text" name="q" class="form-control" id="search">
