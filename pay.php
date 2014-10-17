@@ -116,7 +116,7 @@
 								}
 								else
 								{
-									header("Location: paysupplier2.php");
+									header("Location: pay2.php");
 								}
 							}
 								@mysqli_close($sqlconn);?>

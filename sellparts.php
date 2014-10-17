@@ -173,6 +173,7 @@
 										$ID = $rows['part_id'];
 										if(isset($_POST[$ID])&& $_POST[$ID] <= $rows['qty'])
 										{
+										
 											if($_POST[$ID]>0)
 											{
 										
@@ -202,13 +203,13 @@
 									if(!isset($_GET['cust']) || $_GET['cust']!="exist"){
 									if(isset($_POST['name'])&&isset($_POST['num'])&&isset($_POST['address'])){
 								$insertq="INSERT INTO customers_t (name, address, contact_num) VALUES(\"".$_POST['name']."\",".$_POST['num'].",".$_POST['address'].");";
-								
+									
 								mysqli_query($sqlconn, $insertq);							
 								$qerid ="SELECT MAX(customer_id) from customers_t;";
 								$rowsults = @mysqli_query($sql_conn, $qerid);
 								$rowid = @mysqli_fetch_array($rowsults);
 								$_SESSION['custid']=$rowid['MAX(customer_id)'];
-								header("Location: sellparts2.php");
+								#header("Location: sellparts2.php");
 								}
 								else
 								{
@@ -233,11 +234,20 @@
 									if(isset($_POST[$name]))
 									{
 										$ID = $rows['part_id'];
-										if(isset($_POST[$ID])&& $_POST[$ID] > 0)
+										if(isset($_POST[$ID])&&$_POST[$ID] <= $rows['qty'])
 										{
+										
+											if($_POST[$ID]>0)
+											{
 										
 											$_SESSION['string'].= $ID.";".$_POST[$ID].";";
 											
+											}
+										}
+										else
+										{
+											$_SESSION['string'] = "Not enough";
+											break;
 										}
 										
 									}
@@ -245,6 +255,10 @@
 								if($_SESSION['string']=="")
 								{
 									echo "SELECT ITEMS TO ORDER!";
+								}
+								else if($_SESSION['string']=="Not enough")
+								{
+									echo "KULANG";
 								}
 								else{
 									header("Location: sellparts2.php");
