@@ -16,7 +16,6 @@ CS123 Project
 
 ====
 ##I. SYSTEM REQUIREMENTS<h2>
-    **MINIMUM**
   
       WINDOWS:
       
@@ -43,9 +42,34 @@ CS123 Project
         Other Requirements:Local Host connection
         
 ##II. INSTALLATION<h2>
-  i. 
-  ii.
-  iii.
+  i. Install wamp.
+  
+  ii. Set-up database.
+  
+  iii. 
+  
 ##III. MODULES<h2>  
+   1. View Item
+         
+         This module allows the employee to view the details 
+   2. View Customer
+   
+   3. View Supplier
+   
+   4. View Invoice
+   
+   5. View Stock Order
+   
+   6. Order Parts
+   
+   7. Sell Parts
+   
+   8. Cancel Order
+
+   9. 
+   
+   10.
+   
+   
 ##IV. UNINSTALLATION<h2>
 
