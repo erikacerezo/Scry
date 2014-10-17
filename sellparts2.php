@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start();?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -8,9 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/orderparts.css" rel="stylesheet">
 	<link href="css/topmargin.css" rel="stylesheet">
-	<link href="css/viewitem.css" rel="stylesheet">
+	<link href="css/orderparts2.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Raleway:800|Titillium+Web:700' rel='stylesheet' type='text/css'>
      <!--<link href="css/mainmenu.css" rel="stylesheet">-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -21,28 +21,26 @@
     <![endif]-->
   </head>
   <body>
-  <?php session_start();?>
- <div class="wrapper">
-		<div class="container-fluid">
-				<div class="row">
-					<ul class="nav nav-pills">
-				<?php
+  <?php
 				$moneybag = array();
 				$moneybag['cart'] = explode(";",$_SESSION['string']);
 	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");
 	?>
-							<li><a href="viewitem.php">View Item</a></li>
+ <div class="wrapper">
+		<div class="container-fluid">
+				<div class="row">
+					<ul class="nav nav-pills">
+						<li><a href="viewitem.php">View Item</a></li>
 							<li><a href="viewcustomer.php">View Customer</a></li>
 							<li><a href="viewsupplier.php">View Supplier</a></li>
-					<?php if($_SESSION['admin'] == 1){
+							<?php if($_SESSION['admin'] == 1){
 							echo "<li><a href=\"viewinvoice.php\">View Invoice</a></li>
 							<li><a href=\"viewstockorder.php\">View Stock Order</a></li>
 							";}?>
-							<li class="active"><a href="orderparts.php">Order Parts</a></li>
-							<li ><a href="sellparts.php">Sell Parts</a></li>
-							<li><a href="cancelorder.php">Cancel Order</a></li>
-						
+							<li ><a href="orderparts.php">Order Parts</a></li>
+							<li class="active"><a href="sellparts.php">Sell Parts</a></li>
 							
+							<li><a href="cancelorder.php">Cancel Order</a></li>
 							<li><a href="receivepay.php">Receive Payment</a></li>
 							<li><a href="pay.php">Pay Supplier</a></li>
 							 <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span></a></li>
@@ -56,15 +54,13 @@
 						<p class ="navbar-text pull-right">Powered by SCRY</p>
 				</div> 
 				</nav>
-		<div class="laman">
+		<div	 class="laman">
 			<div class="container-fluid">
 					<div class="row">
-					
-					<h3>You are ordering the following:</h3>
+					<h3>You are selling the following:</h3>
 					</div>
 							<div class="row">
 							<table class="table table-striped">
-							
 							<tr>
 								<th>ID #</th>
 								<th>Product Name</th>
@@ -73,7 +69,7 @@
 								<th style="width: 120px;">Quantity</th>
 							</tr>
 							<!--samplerow-->
-							<?php
+								<?php
 							$index = 0;
 							$display ="";
 							$totalqty = 0;
@@ -108,18 +104,15 @@
 								
 								if($_SERVER["REQUEST_METHOD"]=="POST")
 								{
-									$getsup = "SELECT supplier_id from suppliers_t where name like \"".$_SESSION['supp']."\";";
-									$sup = @mysqli_query($sqlconn, $getsup);
-									$su = @mysqli_fetch_array($sup);
-									$sid = $su['supplier_id'];
 									
-									$neworder = "INSERT INTO stock_orders_t(date_ordered,status)
-									VALUES(CURDATE(), \"Pending\");";
+									
+									$neworder = "INSERT INTO invoices_t(customer_id,invoice_date,status)
+									VALUES(".$_SESSION['custid'].",CURDATE(), \"Pending\");";
 									mysqli_query($sqlconn, $neworder);
-									$newerid = "SELECT MAX(stock_order_id) from stock_orders_t;";
+									$newerid = "SELECT MAX(invoice_id) from invoices_t;";
 									$newerid1= @mysqli_query($sqlconn, $newerid);
 									$newerid2= @mysqli_fetch_array($newerid1);
-									$newid = $newerid2['MAX(stock_order_id)'];
+									$newid = $newerid2['MAX(invoice_id)'];
 									$index = 0;
 									$index2= 1;
 									
@@ -131,26 +124,27 @@
 										$get = @mysqli_fetch_array($getprice);
 										$price = $get['price'];
 									
-										$insert = "INSERT INTO stock_order_histories(part_id, supplier_id, stock_order_id, current_price, qty) VALUES(".$moneybag['cart'][$index].",".$sid.",".$newid.",".$price.",".$moneybag['cart'][$index2].");";
+										$insert = "INSERT INTO invoice_histories_t(invoice_id,part_id,qty, current_price) VALUES(".$newid.",".$moneybag['cart'][$index].",".$moneybag['cart'][$index2].",".$price.");";
 										
-										$makedagdag = "UPDATE parts_t SET qty = ".($get['qty'] + $moneybag['cart'][$index2])." WHERE part_id =".$moneybag['cart'][$index].";";
+								
 										
+										$makebawas = "UPDATE parts_t SET qty = ".($get['qty'] - $moneybag['cart'][$index2])." WHERE part_id =".$moneybag['cart'][$index].";";
 										
 										$index++;
 										$index2++;
-										mysqli_query($sqlconn, $makedagdag);
 										mysqli_query($sqlconn, $insert);
+										mysqli_query($sqlconn, $makebawas);
 									}
-									header("Location: orderparts3.php");
+									header("Location: sellparts3.php");
 								}
 								@mysqli_close($sqlconn);?>
 						</table>
 					</div>
+					<form method="POST">
 					<div class="row">
-					<a href="orderparts.php"class="pull-right btn btn-primary btn-lg" role="button" id="cancel">Cancel</a>
-					<form method = "POST">
-					<input type="submit" value="Confirm Order"class="pull-right btn btn-primary btn-lg" role="button" id="confirm">
-					</form></div>
+					<input type="submit"class="pull-right btn btn-primary btn-lg" role="button" id="confirm" value="Confirm Order">
+					<a href="../sellparts.php"class="pull-right btn btn-primary btn-lg" role="button" id="cancel">Cancel</a>
+					</div></form>
 				</div>
 				</div>
 			</div>

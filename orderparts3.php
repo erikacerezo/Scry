@@ -26,12 +26,15 @@
 							<li><a href="viewitem.php">View Item</a></li>
 							<li><a href="viewcustomer.php">View Customer</a></li>
 							<li><a href="viewsupplier.php">View Supplier</a></li>
-							<li><a href="viewinvoice.php">View Invoice</a></li>
-							<li><a href="viewstockorder.php">View Stock Order</a></li>
+						<?php if($_SESSION['admin'] == 1){
+							echo "<li><a href=\"viewinvoice.php\">View Invoice</a></li>
+							<li><a href=\"viewstockorder.php\">View Stock Order</a></li>
+							";}?>
 							<li class="active"><a href="orderparts.php">Order Parts</a></li>
-							<li><a href="updateorder.php">Update Order</a></li>
-							<?php if($_SESSION['admin'] == 1){
-							echo "<li><a href=\"checkaccount.php\">Check Accounting</a></li>";}?>
+							<li><a href="cancelorder.php">Cancel Order</a></li>
+							<li ><a href="sellparts.php">Sell Parts</a></li>
+							
+							
 							<li><a href="receivepay.php">Receive Payment</a></li>
 							<li><a href="pay.php">Pay Supplier</a></li>
 							 <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span></a></li>

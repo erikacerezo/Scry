@@ -23,22 +23,31 @@
   <body>
   <?php
 	$sqlconn=@mysqli_connect("localhost", "root", "", "scry") or die("There was a problem reaching the database.");
-	$quer = "SELECT * FROM parts_t ";?>
+	$quer = "SELECT "
+			."invoices_t.invoice_id as invoice, "
+			."invoices_t.invoice_date as inDate, "
+			."invoices_t.status as inStat, "
+			."customers_t.name as custName, "
+			."customers_t.address as custAdd, "
+			."parts_t.part_name as partName, "
+			."invoice_histories_t.qty quant, "
+			."invoice_histories_t.current_price currPrice "
+			."FROM invoices_t,invoice_histories_t,customers_t,parts_t";?>
  <div class="wrapper">
 		<div class="container-fluid">
 				<div class="row">
 					<ul class="nav nav-pills">
-							<li class="active"><a href="viewitem.php">View Item</a></li>
+							<li><a href="viewitem.php">View Item</a></li>
 							<li><a href="viewcustomer.php">View Customer</a></li>
 							<li><a href="viewsupplier.php">View Supplier</a></li>
-					<?php if($_SESSION['admin'] == 1){
-							echo "<li><a href=\"viewinvoice.php\">View Invoice</a></li>
+							<?php if($_SESSION['admin'] == 1){
+							echo  "<li  class=\"active\"><a href=\"viewinvoice.php\">View Invoice</a></li>
 							<li><a href=\"viewstockorder.php\">View Stock Order</a></li>
 							";}?>
-							<li><a href="orderparts.php">Order Parts</a></li>
+							<li ><a href="orderparts.php">Order Parts</a></li>
 							<li ><a href="sellparts.php">Sell Parts</a></li>
 							<li><a href="cancelorder.php">Cancel Order</a></li>
-						
+							
 							<li><a href="receivepay.php">Receive Payment</a></li>
 							<li><a href="pay.php">Pay Supplier</a></li>
 							 <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span></a></li>
@@ -57,31 +66,9 @@
 					<div class="row">
 						<div class="col-md-2">
 							 <div class="row">
-									<div class="dropdown">
-										<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-										<strong>SORT BY</strong>
-										<span class="caret"></span>
-										</button>
-													<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=part_id">ID #</a></li>
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="?sort_by=part_detail">Name</a></li>
-													<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Supplier</a></li>
-													</ul>
-									</div>
 							</div>
 							<div class="row">
-									<div class="dropdown">
-										<!--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">-->
-										<strong>SEARCH BY</strong>
-										<span class="caret"></span>
-										<form method="POST" role="form" >
-										<select name="search">
-													<!--<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">-->
-													<option value="part_id"><a role="menuitem" tabindex="-1">ID #</a></option>
-													<option value="part_name"><a role="menuitem" tabindex="-1" href="#">Name</a></option>
-													<option part value="part_detail"><a role="menuitem" tabindex="-1" href="#">Description</a></option>
-													</select>
-									</div>
+									
 							</div>
 							<div class="row">
 							<!--	<form role="form">-->
@@ -94,29 +81,37 @@
 						<div class="col-md-10">
 						<table class="table table-striped">
 							<tr>
-								<th>ID #</th>
-								<th>Product Name</th>
-								<th>Product Description</th>
-								<th>Price</th>
-								<th>		Quantity</th>
+								<th>Invoice ID #</th>
+								<th>Invoice Date</th>
+								<th>Status</th>
+								<th>Customer Name</th>
+								<th>Address</th>
+								<th>Part Name</th>
+								<th>Quantity</th>
+								<th>Current Price</th>
 							</tr>
 							<!--samplerow-->
 							<tr><?php 
 								
 								if(isset($_POST['q']))
 								{
-									$quer.="WHERE ".$_POST['search']." LIKE \"%".$_POST['q']."%\"";
+									$quer.=" WHERE"
+									." invoices_t.invoice_id =  ". $_POST['q'] . " "
+									." AND invoice_histories_t.invoice_id = " . $_POST['q'] 
+									." AND invoices_t.invoice_id = invoice_histories_t.invoice_id"
+									." AND customers_t.customer_id = invoices_t.customer_id" 
+									." AND invoice_histories_t.part_id = parts_t.part_id"									
+									.";"; 								
 								}						
-								if(isset($_GET['sort_by']))
-								{
-									$quer.="ORDER BY ".$_GET['sort_by'].";";
-								}
+					
 								else
 								{
-									$quer.=";";
+									$quer.=" WHERE invoices_t.invoice_id = invoice_histories_t.invoice_id AND customers_t.customer_id = invoices_t.customer_id AND invoice_histories_t.part_id = parts_t.part_id; ";
 								}
 								
+								
 								$result = @mysqli_query($sqlconn, $quer);
+								
 								if(@mysqli_num_rows($result) == 0)
 								{
 									echo "<td>No items found</td>.";
@@ -125,11 +120,15 @@
 								$temp ="";
 								while($row = @mysqli_fetch_array($result))
 								{
-								$temp.= ("<tr><td>".$row['part_id']."</td>
-								<td>".$row['part_name']."</td>
-								<td>".$row['part_detail']."</td>
-								<td>".$row['price']."</td>
-								<td>".$row['qty']."</td></tr>");
+								$temp.= ("<tr><td>".$row['invoice']."</td>
+								<td>".$row['inDate']."</td>
+								<td>".$row['inStat']."</td>
+								<td>".$row['custName']."</td>
+								<td>".$row['custAdd']."</td>
+								<td>".$row['partName']."</td>
+								<td>".$row['quant']."</td>
+								<td>".$row['currPrice']."</td>
+								</tr>");
 								}
 								echo $temp;
 						

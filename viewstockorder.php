@@ -40,12 +40,14 @@
 							<li><a href="viewitem.php">View Item</a></li>
 							<li><a href="viewcustomer.php">View Customer</a></li>
 							<li><a href="viewsupplier.php">View Supplier</a></li>
-							<li><a href="viewinvoice.php">View Invoice</a></li>
-							<li class="active"><a href="viewstockorder.php">View Stock Order</a></li>
-							<li><a href="orderparts.php">Order Parts</a></li>
-							<li><a href="cancelorder.php">Cancel Order</a></li>
 							<?php if($_SESSION['admin'] == 1){
-							echo "<li><a href=\"checkaccount.php\">Check Accounting</a></li>";}?>
+							echo "<li><a href=\"viewinvoice.php\">View Invoice</a></li>
+							<li class=\"active\"><a href=\"viewstockorder.php\">View Stock Order</a></li>
+							";}?>
+							<li><a href="orderparts.php">Order Parts</a></li>
+							<li ><a href="sellparts.php">Sell Parts</a></li>
+							<li><a href="cancelorder.php">Cancel Order</a></li>
+							
 							<li><a href="receivepay.php">Receive Payment</a></li>
 							<li><a href="pay.php">Pay Supplier</a></li>
 							 <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span></a></li>
@@ -66,18 +68,7 @@
 							 <div class="row">
 							</div>
 							<div class="row">
-									<div class="dropdown">
-										<!--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown">-->
-										<strong>SEARCH BY</strong>
-										<span class="caret"></span>
-										<form method="POST" role="form" >
-										<select name="search">
-													<!--<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">-->
-													<option value="supplier_id"><a role="menuitem" tabindex="-1">ID #</a></option>
-													<option value="name"><a role="menuitem" tabindex="-1" href="#">Name</a></option>
-													<option value="address"><a role="menuitem" tabindex="-1" href="#">Address</a></option>
-													</select>
-									</div>
+									
 							</div>
 							<div class="row">
 							<!--	<form role="form">-->

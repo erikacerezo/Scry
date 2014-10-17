@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php session_start();?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -19,7 +18,7 @@
     <![endif]-->
   </head>
   <body>
-  
+  <?php session_start();?>
  <div class="wrapper">
 		<div class="container-fluid">
 				<div class="row">
@@ -31,11 +30,12 @@
 							echo "<li><a href=\"viewinvoice.php\">View Invoice</a></li>
 							<li><a href=\"viewstockorder.php\">View Stock Order</a></li>
 							";}?>
-							<li><a href="orderparts.php">Order Parts</a></li>
+							<li class="active"><a href="orderparts.php">Order Parts</a></li>
+							<li ><a href="sellparts.php">Sell Parts</a></li>
 							<li><a href="cancelorder.php">Cancel Order</a></li>
 						
 							<li><a href="receivepay.php">Receive Payment</a></li>
-							<li><a href="pay.php">Pay Supplier</a></li>
+							<li  class="active"><a href="pay.php">Pay Supplier</a></li>
 							 <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span></a></li>
 					</ul>
 					</div>
@@ -43,8 +43,10 @@
 			<div class="container-fluid">
 					<div class="row">
 					<div class="jumbotron">
-			<center><h1>Welcome!</h1>
-			<p>Click on the options above to start your session.</p></center>
+			<center><h1>Success!</h1>
+			<p>Transaction Completed.</p>
+			<p><a href="../orderparts.html" class="btn btn-primary btn-lg" role="button">New Order</a></p>
+			</center>
 					</div>
 					</div>
 				</div>

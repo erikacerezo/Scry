@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<?php session_start();?>
 <html lang="en">
   <head>
+  <?php session_start();?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,6 @@
     <![endif]-->
   </head>
   <body>
-  
  <div class="wrapper">
 		<div class="container-fluid">
 				<div class="row">
@@ -31,9 +30,10 @@
 							echo "<li><a href=\"viewinvoice.php\">View Invoice</a></li>
 							<li><a href=\"viewstockorder.php\">View Stock Order</a></li>
 							";}?>
-							<li><a href="orderparts.php">Order Parts</a></li>
+							<li ><a href="orderparts.php">Order Parts</a></li>
+							<li class="active"><a href="sellparts.php">Sell Parts</a></li>
+							
 							<li><a href="cancelorder.php">Cancel Order</a></li>
-						
 							<li><a href="receivepay.php">Receive Payment</a></li>
 							<li><a href="pay.php">Pay Supplier</a></li>
 							 <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span></a></li>
@@ -43,8 +43,10 @@
 			<div class="container-fluid">
 					<div class="row">
 					<div class="jumbotron">
-			<center><h1>Welcome!</h1>
-			<p>Click on the options above to start your session.</p></center>
+			<center><h1>Success!</h1>
+			<p>Your transaction has been recorded.</p>
+			<p><a href="sellparts.php" class="btn btn-primary btn-lg" role="button">New Transaction</a></p>
+			</center>
 					</div>
 					</div>
 				</div>
