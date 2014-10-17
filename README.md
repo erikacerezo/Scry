@@ -91,4 +91,6 @@ CS123 Project
    
    
 ##IV. UNINSTALLATION<h2>
-
+      i. Uninstall wamp.
+  
+      ii. Delete database and related files.
