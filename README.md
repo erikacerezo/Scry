@@ -5,10 +5,10 @@ CS123 Project
 
 ====
 #CONTENTS:<h1>
-##I. System Requirements<h2>
-##II. Installation<h2>
-##III. Modules<h2>
-##IV. Uninstallation<h2>
+1. I. System Requirements
+2. II. Installation
+3. III. Modules
+4. IV. Uninstallation
 
 ====
 I. SYSTEM REQUIREMENTS
