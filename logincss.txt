@@ -1,6 +1,6 @@
 body
 {
-    background-color: #CC0300;
+    background-color: #4975A5;
 }
 
 .header h1 {
