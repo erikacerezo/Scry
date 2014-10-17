@@ -86,7 +86,7 @@ CS123 Project
 
    10. Pay Supplier
 
-         This module enables the employee to update the stock orders in the database. The employee must first select pending orders that have been completed. After the employee selects the payed stock orders, he or she must click the submit button in order for the database to update. The database will then proceed all selected stock orders to change their status from "Pending" to "Complete."
+         This module enables the employee to update the stock orders in the database. The employee must first select pending orders that have been completed. After the employee selects the paid stock orders, he or she must click the submit button in order for the database to update. The database will then proceed all selected stock orders to change their status from "Pending" to "Complete."
    
    
    
