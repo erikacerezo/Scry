@@ -45,8 +45,7 @@ CS123 Project
   i. Install wamp.
   
   ii. Set-up database.
-  
-  iii. 
+
   
 ##III. MODULES<h2>  
    1. View Item
@@ -83,9 +82,11 @@ CS123 Project
    
    9. Receive Payment
    
-      This module enables the employee to search for 
+      This module enables the employee to update the invoices in the database. The employee must first select pending invoices that have been completed. After the employee selects the payed invoices, he or she must click the submit button in order for the database to update. The database will then proceed all selected invoices to change their status from "Pending" to "Complete."
 
    10. Pay Supplier
+
+         This module enables the employee to update the stock orders in the database. The employee must first select pending orders that have been completed. After the employee selects the payed stock orders, he or she must click the submit button in order for the database to update. The database will then proceed all selected stock orders to change their status from "Pending" to "Complete."
    
    
    
