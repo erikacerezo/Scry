@@ -16,7 +16,7 @@ CS123 Project
 
 ====
 ##I. SYSTEM REQUIREMENTS<h2>
-  ####MINIMUM<h4>
+  ###MINIMUM<h3>
   
       WINDOWS:
       
