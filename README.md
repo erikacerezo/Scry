@@ -5,13 +5,13 @@ CS123 Project
 
 ====
 #CONTENTS:<h1>
-1. I. System Requirements
-2. II. Installation
-3. III. Modules
-4. IV. Uninstallation
+**I. System Requirements**
+**II. Installation**
+**III. Modules**
+**IV. Uninstallation**
 
 ====
-I. SYSTEM REQUIREMENTS
+##I. SYSTEM REQUIREMENTS<h2>
   i. MINIMUM
       WINDOWS:
         OS:Windows XP/Vista/Windows 7/Windows 8 
@@ -25,10 +25,10 @@ I. SYSTEM REQUIREMENTS
         Memory:4 GB RAM 
         Hard Drive:512MB HD space 
         Other Requirements:Local Host connection
-II. Installation
+##II. INSTALLATION<h2>
   i. 
   ii.
   iii.
-III. MODULES  
-IV. UNINSTALLATION
+##III. MODULES<h2>  
+##IV. UNINSTALLATION<h2>
 
